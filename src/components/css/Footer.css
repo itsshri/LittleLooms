@@ -10,7 +10,7 @@ body {
   
   .footer {
     z-index: 1;
-    --footer-background: #ED5565;
+    --footer-background: #a07cda;
     display: grid;
     position: relative;
     grid-area: footer;
@@ -44,7 +44,9 @@ body {
     grid-gap: 4rem;
     padding: 2rem;
     background: var(--footer-background);
-    padding-left: 20px;
+    padding-right: 80px;
+    justify-content: center;
+    align-items: center;
     
   }
   

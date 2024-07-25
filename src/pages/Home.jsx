@@ -39,11 +39,11 @@ const Home = () => {
     <div className="home">
       <div className="marquee">
         <div className="marquee-inner">
-          <img src="https://plus.unsplash.com/premium_vector-1683141331289-e5fe7a075ed8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJvb2t8ZW58MHx8MHx8fDA%3D" alt="Image 1" />
-          <img src="https://images.unsplash.com/photo-1718619578357-f3825be21d50?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjE2NzIzNTF8&ixlib=rb-4.0.3&q=85" alt="Image 3" />
-          <img src="https://images.unsplash.com/photo-1719518870616-8deacda7e18b?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjE2NzI0Mjl8&ixlib=rb-4.0.3&q=85" alt="Image 2" />
-          <img src="https://images.unsplash.com/photo-1719518384441-d12311be54c6?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjE2NzIzODN8&ixlib=rb-4.0.3&q=85" alt="Image 4" />
-          <img src="https://images.unsplash.com/photo-1719268921855-d2897ed6e91f?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjE2NzI0Mjl8&ixlib=rb-4.0.3&q=85" alt="Image 5" />
+          <img src="src\assets\img\tom_and_jerry.jpg" alt="Image 1" />
+          <img src="src\assets\img\shinchan1.jpg" alt="Image 3" />
+          <img src="src\assets\img\iceage.jpg" alt="Image 2" />
+          <img src="src\assets\img\angry_birds.jpg" alt="Image 4" />
+          <img src="src\assets\img\oggy.jpg" alt="Image 5" />
         </div>
       </div>
       <Footer />

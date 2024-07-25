@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './pages/Home'; // Adjust the import path as needed
+import Home from './pages/Home'; 
+import Podcast from './pages/Podcast';
+import Login from './pages/Login';
 
 const App = () => {
   const [theme, setTheme] = useState('light');
@@ -24,10 +26,10 @@ const App = () => {
       />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/podcast" element={<Podcast />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/courses" element={<div>Courses</div>} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/visa-services" element={<div>Services</div>} />
-        <Route path="/enquiry" element={<div>Enquiry</div>} />
       </Routes>
     </Router>
   );
