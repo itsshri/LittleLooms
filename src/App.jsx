@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home'; 
 import Podcast from './pages/Podcast';
 import Login from './pages/Login';
+import Book from './pages/Book';
 
 const App = () => {
   const [theme, setTheme] = useState('light');
@@ -27,12 +28,16 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/podcast" element={<Podcast />} />
+        <Route path="/book" element={<Book/>} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login/>} />
-        <Route path="/visa-services" element={<div>Services</div>} />
       </Routes>
     </Router>
   );
 };
 
 export default App;
+
+
+
+
