@@ -1,9 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import '../pages/css/Login.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -15,6 +18,15 @@ const Login = () => {
       bodyClassName: 'toast-custom-body',
       progressClassName: 'toast-custom-progress',
     });
+
+    // Navigate to Admindash.jsx
+    setTimeout(() => {
+      navigate('/admindash'); // Update with your actual route
+    }, 2000); // Delay to match toast duration
+  };
+
+  const handleAdminLoginClick = () => {
+    navigate('/adminlogin'); // Update with your actual route
   };
 
   return (
@@ -31,7 +43,7 @@ const Login = () => {
           <div className="login-slide-images">
             <img
               className="login-slide"
-              src="https://i.pinimg.com/564x/54/bb/96/54bb962a32c1093f999cb45d89c9dc0e.jpg"
+              src="src\assets\img\log.jpg"
               alt="Card Image"
             />
             <img
@@ -41,7 +53,7 @@ const Login = () => {
             />
             <img
               className="login-slide"
-              src="https://i.pinimg.com/564x/6a/46/40/6a4640fd2df70f1e76f388175ffb0349.jpg"
+              src="src\assets\img\log.jpg"
               alt="Card Image"
             />
           </div>
@@ -57,7 +69,7 @@ const Login = () => {
               type="email"
               name="email"
               id="login-email"
-              placeholder="email"
+              placeholder="Email"
               required
             />
           </div>
@@ -67,7 +79,7 @@ const Login = () => {
               type="password"
               name="password"
               id="login-password"
-              placeholder="password"
+              placeholder="Password"
               required
             />
           </div>
@@ -79,8 +91,13 @@ const Login = () => {
           </div>
           <button type="submit" className="login-button">Log In</button>
           <hr className="login-divider" />
-          <a className="login-signup-link" href="#">Don't have an account? Sign Up</a>
-          <p className="login-creator">Made with <span>❤</span> by Shri</p>
+          <a className="login-signup-link" href="#signup">Don't have an account? Sign Up</a>
+          <center>
+            <p className="login-creator">Made with <span>❤</span> by Shri</p>
+            <button type="button" className="login-signup-link" onClick={handleAdminLoginClick}>
+              Admin Login
+            </button>
+          </center>
         </form>
       </main>
       <ToastContainer

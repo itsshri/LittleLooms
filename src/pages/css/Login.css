@@ -52,7 +52,8 @@ html {
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  margin-top: 120px;
+  margin-top: 10px;
+  box-shadow: #e94057;
 }
 
 /* Styling for the image container and slider */
