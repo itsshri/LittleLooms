@@ -8,30 +8,13 @@ const Navbar = ({ onMenuClick, theme, toggleTheme }) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleHomeClick = (e) => {
+  // Generic navigation handler
+  const handleNavigation = (e, path) => {
     e.preventDefault();
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      navigate('/home');
-    }, 2000); // Adjust the delay as needed
-  };
-
-  const handlePodcastClick = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      navigate('/podcast');
-    }, 2000); // Adjust the delay as needed
-  };
-
-  const handleSignupClick = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      navigate('/signup');
+      navigate(path);
     }, 2000); // Adjust the delay as needed
   };
 
@@ -42,12 +25,12 @@ const Navbar = ({ onMenuClick, theme, toggleTheme }) => {
         LittleLooms <HopOff />
       </div>
       <nav className="navbar-navigation">
-        <a href="/home" onClick={handleHomeClick}><House /></a>
-        <a href="/podcast" onClick={handlePodcastClick}><Podcast /></a>
-        <Link to="/premium"><BadgePercent /></Link>
-        <Link to="/login"><ScanFace /></Link>
-        <a href="/signup" onClick={handleSignupClick}><NotebookText /></a> {/* Use <a> with onClick */}
-        <Link to="/userdash"><LibraryBig/></Link>
+        <a href="/home" onClick={(e) => handleNavigation(e, '/home')}><House /></a>
+        <a href="/podcast" onClick={(e) => handleNavigation(e, '/podcast')}><Podcast /></a>
+        <a href="/premium" onClick={(e) => handleNavigation(e, '/premium')}><BadgePercent /></a>
+        <a href="/login" onClick={(e) => handleNavigation(e, '/login')}><ScanFace /></a>
+        <a href="/signup" onClick={(e) => handleNavigation(e, '/signup')}><NotebookText /></a>
+        <a href="/userdash" onClick={(e) => handleNavigation(e, '/userdash')}><LibraryBig /></a>
       </nav>
       <button className="navbar-theme-toggle-button" onClick={toggleTheme}>
         {theme === 'light' ? <MoonStar /> : <Sun />}

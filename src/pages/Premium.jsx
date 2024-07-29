@@ -14,13 +14,15 @@ const Premium = () => {
     <div className="checkout-panel">
       <div className="panel-body">
         <h2 className="title">Checkout here!</h2>
+        <h2 className='title'>We are currently out of service..We'll reach you soon :(</h2>
+        <h2 className='title'>Until then try accessing our free books and Podcasts.</h2>
 
-        <div className="progress-bar">
+        {/* <div className="progress-bar">
           <div className="step active"></div>
           <div className="step active"></div>
           <div className="step"></div>
           <div className="step"></div>
-        </div>
+        </div> */}
 
         <div className="payment-method">
           <label htmlFor="card" className="method card">

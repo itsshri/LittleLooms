@@ -15,10 +15,10 @@ const Podcast = () => {
     { id: 4, title: 'Tom and Jerry: A Day at the Beach', episodes: '50 Episodes', image: 'src/assets/img/tom_and_jerry.jpg', author: <Crown/> },
     { id: 5, title: 'Red\'s Mighty Feathers', episodes: '30 Episodes', image: 'src/assets/img/angry_bird.jpg', author: <Crown/> },
     { id: 6, title: 'Moral Stories', episodes: '25 Episodes', image: 'https://cdn-icons-png.flaticon.com/256/130/130885.png',author: 'Free' },
-    { id: 7, title: 'Jazz Classics', episodes: '22 Songs', image: 'https://cdn-icons-png.flaticon.com/256/6074/6074694.png',author: 'Free' },
+    { id: 7, title: 'Classical Stories', episodes: '22 Songs', image: 'https://cdn-icons-png.flaticon.com/256/6074/6074694.png',author: 'Free' },
     { id: 8, title: 'Vikram Betal (Original Tamil Podcast)', episodes: '10 Songs', image: 'https://i.pinimg.com/564x/97/95/36/979536a240d0625db5cabcd876269d96.jpg',author: 'Free' },
     { id: 9, title: 'Grandma\'s Stories', episodes: '50 Episodes', image: 'https://cdn-icons-png.flaticon.com/256/3250/3250606.png',author: 'Free' },
-    { id: 10, title: 'Tech Talks', episodes: '20 Episodes', image: 'https://cdn-icons-png.flaticon.com/256/3552/3552878.png',author: 'Free' },
+    { id: 10, title: 'Bed-time stories', episodes: '20 Episodes', image: 'https://cdn-icons-png.flaticon.com/256/3552/3552878.png',author: 'Free' },
   ];
 
   // Filter podcasts based on search term
@@ -38,7 +38,7 @@ const Podcast = () => {
           </div>
         </div>
         <div className="header-title">
-          Home
+          Podcast
         </div>
         <div className="header-buttons">
           <button className="notifications">
@@ -51,8 +51,8 @@ const Podcast = () => {
       </header>
 
       <section className="title">
-        <h1>Listening Everyday</h1>
-        <p>Explore millions of podcasts according to your taste</p>
+        <h1>Listen Everyday</h1>
+        <p>Explore Podcasts according to your taste</p>
       </section>
 
       <center>

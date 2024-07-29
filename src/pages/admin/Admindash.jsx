@@ -94,11 +94,11 @@ function Admindash() {
       <div className="navigation">
         <ul>
           <li><a href="#"><span className="icon"><IonIcon icon={homeOutline} /></span></a></li>
-          <li><a href="#"><span className="icon"><IonIcon icon={peopleOutline} /></span><span className="title">Customers</span></a></li>
-          <li><a href="#"><span className="icon"><IonIcon icon={chatbubbleOutline} /></span><span className="title">Messages</span></a></li>
-          <li><a href="#"><span className="icon"><IonIcon icon={helpOutline} /></span><span className="title">Help</span></a></li>
-          <li><a href="#"><span className="icon"><IonIcon icon={settingsOutline} /></span><span className="title">Settings</span></a></li>
-          <li><a href="#"><span className="icon"><IonIcon icon={lockClosedOutline} /></span><span className="title">Password</span></a></li>
+          <li><a href="#"><span className="icon"><IonIcon icon={peopleOutline} /></span><span className="title">Manage Users</span></a></li>
+          {/* <li><a href="#"><span className="icon"><IonIcon icon={chatbubbleOutline} /></span><span className="title">Messages</span></a></li> */}
+          {/* <li><a href="#"><span className="icon"><IonIcon icon={helpOutline} /></span><span className="title">Help</span></a></li> */}
+          {/* <li><a href="#"><span className="icon"><IonIcon icon={settingsOutline} /></span><span className="title">Settings</span></a></li> */}
+          {/* <li><a href="#"><span className="icon"><IonIcon icon={lockClosedOutline} /></span><span className="title">Password</span></a></li> */}
           <li><a href="#" onClick={handleSignOut}><span className="icon"><IonIcon icon={logOutOutline} /></span><span className="title">Sign Out</span></a></li>
         </ul>
       </div>

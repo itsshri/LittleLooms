@@ -22,13 +22,18 @@ function Userdash() {
   });
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredUsers, setFilteredUsers] = useState([]);
+  const [editMode, setEditMode] = useState(false);
+  const [editedUser, setEditedUser] = useState({
+    name: '',
+    phone: '',
+    email: ''
+  });
   const navigate = useNavigate();
 
   // Function to handle search input changes
   function handleSearchChange(event) {
     const query = event.target.value;
     setSearchQuery(query);
-    // Filter users based on the search query
     setFilteredUsers(users.filter(user =>
       user.name.toLowerCase().includes(query.toLowerCase())
     ));
@@ -43,13 +48,12 @@ function Userdash() {
       const newUser = { 
         name, 
         email, 
-        price: '$100', // Default price
-        payment: 'Series', // Default payment status
-        status: 'Added' // Default status
+        price: '$100', 
+        payment: 'Series', 
+        status: 'Added' 
       };
       setUsers(prevUsers => {
         const updatedUsers = [...prevUsers, newUser];
-        // Filter the updated list based on the search query
         setFilteredUsers(updatedUsers.filter(user =>
           user.name.toLowerCase().includes(searchQuery.toLowerCase())
         ));
@@ -72,7 +76,6 @@ function Userdash() {
   function handleUserAction(index, action) {
     setUsers(prevUsers => {
       const updatedUsers = prevUsers.filter((_, i) => i !== index);
-      // Filter the updated list based on the search query
       setFilteredUsers(updatedUsers.filter(user =>
         user.name.toLowerCase().includes(searchQuery.toLowerCase())
       ));
@@ -82,6 +85,32 @@ function Userdash() {
       ...prevMetrics,
       comments: action === 'remove' ? prevMetrics.comments - 1 : prevMetrics.comments
     }));
+  }
+
+  // Function to handle edit profile mode
+  function handleEditClick(user) {
+    setEditMode(true);
+    setEditedUser(user);
+  }
+
+  // Function to handle input change for edited user
+  function handleEditChange(event) {
+    const { name, value } = event.target;
+    setEditedUser(prevUser => ({ ...prevUser, [name]: value }));
+  }
+
+  // Function to save edited profile
+  function saveEdit() {
+    setUsers(prevUsers => {
+      const updatedUsers = prevUsers.map(user =>
+        user.email === editedUser.email ? editedUser : user
+      );
+      setFilteredUsers(updatedUsers.filter(user =>
+        user.name.toLowerCase().includes(searchQuery.toLowerCase())
+      ));
+      return updatedUsers;
+    });
+    setEditMode(false);
   }
 
   function handleSignOut() {
@@ -95,9 +124,9 @@ function Userdash() {
         <ul>
           <li><a href="#"><span className="icon"><IonIcon icon={homeOutline} /></span></a></li>
           <li><a href="#"><span className="icon"><IonIcon icon={peopleOutline} /></span><span className="title">My Profile</span></a></li>
-          <li><a href="#"><span className="icon"><IonIcon icon={chatbubbleOutline} /></span><span className="title">Edit Profile</span></a></li>
-          <li><a href="#"><span className="icon"><IonIcon icon={helpOutline} /></span><span className="title">Help</span></a></li>
-          <li><a href="#"><span className="icon"><IonIcon icon={settingsOutline} /></span><span className="title">Settings</span></a></li>
+          <li><a href="#" onClick={() => setEditMode(true)}><span className="icon"><IonIcon icon={chatbubbleOutline} /></span><span className="title">Edit Profile</span></a></li>
+          {/* <li><a href="#"><span className="icon"><IonIcon icon={helpOutline} /></span><span className="title">Help</span></a></li> */}
+          {/* <li><a href="#"><span className="icon"><IonIcon icon={settingsOutline} /></span><span className="title">Settings</span></a></li> */}
           <li><a href="#"><span className="icon"><IonIcon icon={lockClosedOutline} /></span><span className="title">Password</span></a></li>
           <li><a href="#" onClick={handleSignOut}><span className="icon"><IonIcon icon={logOutOutline} /></span><span className="title">Log Out</span></a></li>
         </ul>
@@ -132,9 +161,8 @@ function Userdash() {
             <div className="cardHeader">
               <h2>My Wishlist</h2>
               <center>
-              <a href="#" className="btn">View All</a>
+                <a href="#" className="btn">View All</a>
               </center>
-
             </div>
             <table>
               <thead>
@@ -143,7 +171,6 @@ function Userdash() {
                   <td>Price</td>
                   <td>Podcast Name</td>
                   <td>Status</td>
-                  {/* <td>Status</td> */}
                 </tr>
               </thead>
               <tbody>
@@ -197,6 +224,65 @@ function Userdash() {
           </div>
         </div>
 
+        {/* Edit Profile Section */}
+        {editMode && (
+          <div className="editProfile">
+            <div className="cardHeader">
+              <h2>Edit Profile</h2>
+            </div>
+            <div className="form">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Name:</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="name"
+                        value={editedUser.name}
+                        onChange={handleEditChange}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Phone Number:</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="phone"
+                        value={editedUser.phone}
+                        onChange={handleEditChange}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Email:</td>
+                    <td>
+                      <input
+                        type="email"
+                        name="email"
+                        value={editedUser.email}
+                        onChange={handleEditChange}
+                      />
+                    </td>
+                  </tr>
+                    <td>Password:</td>
+                    <td>
+                      <input
+                        type="password"
+                        name="email"
+                        value={editedUser.email}
+                        onChange={handleEditChange}
+                      />
+                    </td>
+                </tbody>
+              </table>
+              <button className="saveButton" onClick={saveEdit}>Save</button>
+              <button className="cancelButton" onClick={() => setEditMode(false)}>Cancel</button>
+            </div>
+          </div>
+        )}
+
         {/* User Management Section */}
         <div className="userManagement">
           <div className="cardHeader">
@@ -205,10 +291,8 @@ function Userdash() {
           <div className="form">
             <input type="text" id="userName" placeholder="Book Name" />
             <input type="email" id="userEmail" placeholder="Price" />
-            {/* <input type="email" id="userEmail" placeholder="Price" /> */}
             <input type="email" id="userEmail" placeholder="Podcast Name" />
             <input type="email" id="userEmail" placeholder="Edition" />
-            {/* <input type="text" id="userEmail" placeholder="Amt" /> */}
             <button className="addUserButton" onClick={addUser}>Add to Wishlist</button>
           </div>
           <div className="userList">

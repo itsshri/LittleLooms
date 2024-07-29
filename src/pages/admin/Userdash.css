@@ -515,3 +515,55 @@
   .userTable button:hover {
     background-color: #e60000;
   }
+
+
+  .editProfile {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .editProfile .cardHeader h2 {
+    margin-bottom: 20px;
+  }
+  
+  .editProfile .form {
+    width: 100%;
+  }
+  
+  .editProfile table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .editProfile td {
+    padding: 10px;
+  }
+  
+  .editProfile input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+  
+  .editProfile .saveButton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .editProfile .cancelButton {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
