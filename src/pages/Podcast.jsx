@@ -14,7 +14,7 @@ const Podcast = () => {
     { id: 3, title: 'ShinChan\'s Crazy Classroom', episodes: '100 Episodes', image: 'src/assets/img/shinchan podcast.jpg', author: <Crown/> },
     { id: 4, title: 'Tom and Jerry: A Day at the Beach', episodes: '50 Episodes', image: 'src/assets/img/tom_and_jerry.jpg', author: <Crown/> },
     { id: 5, title: 'Red\'s Mighty Feathers', episodes: '30 Episodes', image: 'src/assets/img/angry_bird.jpg', author: <Crown/> },
-    { id: 6, title: 'Indie Hits', episodes: '18 Songs', image: 'https://cdn-icons-png.flaticon.com/256/130/130885.png',author: 'Free' },
+    { id: 6, title: 'Moral Stories', episodes: '25 Episodes', image: 'https://cdn-icons-png.flaticon.com/256/130/130885.png',author: 'Free' },
     { id: 7, title: 'Jazz Classics', episodes: '22 Songs', image: 'https://cdn-icons-png.flaticon.com/256/6074/6074694.png',author: 'Free' },
     { id: 8, title: 'Vikram Betal (Original Tamil Podcast)', episodes: '10 Songs', image: 'https://i.pinimg.com/564x/97/95/36/979536a240d0625db5cabcd876269d96.jpg',author: 'Free' },
     { id: 9, title: 'Grandma\'s Stories', episodes: '50 Episodes', image: 'https://cdn-icons-png.flaticon.com/256/3250/3250606.png',author: 'Free' },
