@@ -44,7 +44,7 @@ function Userdash() {
         name, 
         email, 
         price: '$100', // Default price
-        payment: '', // Default payment status
+        payment: 'Series', // Default payment status
         status: 'Added' // Default status
       };
       setUsers(prevUsers => {
@@ -180,7 +180,7 @@ function Userdash() {
                   users.slice(0, 2).map((user, index) => (
                     <tr key={index}>
                       <td width="60px">
-                        <div className="imgBx"><img src="src/assets/img/1000028198_ac627fcd241cb9174bc94.jpg" alt="Customer" /></div>
+                        {/* <div className="imgBx"><img src="src/assets/img/1000028198_ac627fcd241cb9174bc94.jpg" alt="Customer" /></div> */}
                       </td>
                       <td>
                         <h4>{user.name} <br /><span>Location</span></h4>
@@ -205,7 +205,7 @@ function Userdash() {
           <div className="form">
             <input type="text" id="userName" placeholder="Book Name" />
             <input type="email" id="userEmail" placeholder="Price" />
-            <input type="email" id="userEmail" placeholder="Price" />
+            {/* <input type="email" id="userEmail" placeholder="Price" /> */}
             <input type="email" id="userEmail" placeholder="Podcast Name" />
             <input type="email" id="userEmail" placeholder="Edition" />
             {/* <input type="text" id="userEmail" placeholder="Amt" /> */}
@@ -230,8 +230,8 @@ function Userdash() {
               <table>
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Email</th>
+                    <th>Book Name</th>
+                    <th>Price</th>
                     <th>Actions</th>
                   </tr>
                 </thead>

@@ -239,3 +239,24 @@ label {
   background-color: red;
 }
 
+
+.login-signup-button,
+.login-admin-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff; /* Change to your desired button color */
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+}
+
+.login-signup-button:hover,
+.login-admin-button:hover {
+  background-color: #0056b3; /* Change to your desired button hover color */
+}

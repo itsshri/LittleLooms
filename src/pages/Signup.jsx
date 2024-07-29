@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate, Link } from 'react-router-dom'; // Import useNavigate and Link
 import '../pages/css/Signup.css'; 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -39,17 +39,17 @@ const Signup = () => {
           <div className="signup-slide-images">
             <img
               className="signup-slide"
-              src=""
+              src="src/assets/img/log.jpg"
               alt="Card Image"
             />
             <img
               className="signup-slide"
-              src="src\assets\img\log.jpg"
+              src="src/assets/img/boy.jpg"
               alt="Card Image"
             />
             <img
               className="signup-slide"
-              src="https://i.pinimg.com/564x/6a/46/40/6a4640fd2df70f1e76f388175ffb0349.jpg"
+              src="src/assets/img/school boy.jpg"
               alt="Card Image"
             />
           </div>
@@ -101,12 +101,20 @@ const Signup = () => {
             <select
               name="country"
               id="signup-country"
+              className="signup-select"
               required
             >
               <option value="" disabled selected>Select Country</option>
-              {/* Add country options here */}
               <option value="usa">United States</option>
               <option value="canada">Canada</option>
+              <option value="uk">United Kingdom</option>
+              <option value="australia">Australia</option>
+              <option value="germany">Germany</option>
+              <option value="france">France</option>
+              <option value="india">India</option>
+              <option value="china">China</option>
+              <option value="japan">Japan</option>
+              <option value="brazil">Brazil</option>
               {/* Add more countries as needed */}
             </select>
           </div>
@@ -123,7 +131,7 @@ const Signup = () => {
           </div>
           <button type="submit" className="signup-button">Sign Up</button>
           <hr className="signup-divider" />
-          <a className="signup-login-link" href="#">Already have an account? Log In</a>
+          <Link to="/login" className="signup-login-button">Already have an account? Log In</Link>
           <center>
             <p className="signup-creator">Made with <span>❤</span> by Shri</p>
           </center>

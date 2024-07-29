@@ -44,10 +44,10 @@ const Navbar = ({ onMenuClick, theme, toggleTheme }) => {
       <nav className="navbar-navigation">
         <a href="/home" onClick={handleHomeClick}><House /></a>
         <a href="/podcast" onClick={handlePodcastClick}><Podcast /></a>
-        <Link to="/book"><BookOpen /></Link>
         <Link to="/premium"><BadgePercent /></Link>
         <Link to="/login"><ScanFace /></Link>
         <a href="/signup" onClick={handleSignupClick}><NotebookText /></a> {/* Use <a> with onClick */}
+        <Link to="/userdash"><LibraryBig/></Link>
       </nav>
       <button className="navbar-theme-toggle-button" onClick={toggleTheme}>
         {theme === 'light' ? <MoonStar /> : <Sun />}

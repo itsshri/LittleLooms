@@ -240,3 +240,54 @@
     background-color: red;
   }
   
+
+  .signup-login-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff; /* Change to your desired button color */
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signup-login-button:hover {
+    background-color: #0056b3; /* Change to your desired button hover color */
+  }
+  
+
+  .signup-select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    appearance: none; /* Remove default arrow in some browsers */
+    -webkit-appearance: none; /* Remove default arrow in WebKit browsers */
+    -moz-appearance: none; /* Remove default arrow in Firefox */
+  }
+  
+  .signup-select:focus {
+    outline: none;
+    border-color: #007bff; /* Change to your desired focus color */
+  }
+  
+  .signup-select::after {
+    content: '\f078'; /* Unicode for down arrow */
+    font-family: 'Font Awesome 5 Free'; /* Ensure Font Awesome is imported */
+    font-weight: 900;
+    color: #333;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Avoid blocking click events */
+  }
+  

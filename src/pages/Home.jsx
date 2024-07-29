@@ -47,6 +47,7 @@ const Home = () => {
 
   return (
     <div className="home">
+      
       <div className="container">
       </div>
       <div className="marquee">
@@ -62,28 +63,28 @@ const Home = () => {
             src="src/assets/img/shinchan1.jpg" 
             alt="Image 2" 
             className="card"
-            onMouseEnter={() => handleMouseEnter('Shinchan', '4.0/5')}
+            // onMouseEnter={() => handleMouseEnter('Shinchan', '4.0/5')}
             onMouseLeave={handleMouseLeave}
           />
           <img 
             src="src/assets/img/iceage.jpg" 
             alt="Image 3" 
             className="card"
-            onMouseEnter={() => handleMouseEnter('Ice Age', '4.2/5')}
+            // onMouseEnter={() => handleMouseEnter('Ice Age', '4.2/5')}
             onMouseLeave={handleMouseLeave}
           />
           <img 
             src="src/assets/img/angry_birds.jpg" 
             alt="Image 4" 
             className="card"
-            onMouseEnter={() => handleMouseEnter('Angry Birds', '4.3/5')}
+            // onMouseEnter={() => handleMouseEnter('Angry Birds', '4.3/5')}
             onMouseLeave={handleMouseLeave}
           />
           <img 
             src="src/assets/img/oggy.jpg" 
             alt="Image 5" 
             className="card"
-            onMouseEnter={() => handleMouseEnter('Oggy', '4.1/5')}
+            // onMouseEnter={() => handleMouseEnter('Oggy', '4.1/5')}
             onMouseLeave={handleMouseLeave}
           />
         </div>

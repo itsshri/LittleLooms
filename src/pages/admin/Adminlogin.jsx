@@ -19,9 +19,9 @@ const Adminlogin = () => {
       progressClassName: 'toast-custom-progress',
     });
 
-    // Navigate to Userdash.jsx
+    // Navigate to Admindash.jsx
     setTimeout(() => {
-      navigate('/userdash'); // Ensure this matches your routing configuration
+      navigate('/admindash'); // Ensure this matches your routing configuration
     }, 2000); // Delay to match toast duration
   };
 

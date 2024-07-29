@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate, Link } from 'react-router-dom'; // Import useNavigate and Link
 import '../pages/css/Login.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -43,17 +43,17 @@ const Login = () => {
           <div className="login-slide-images">
             <img
               className="login-slide"
-              src="src\assets\img\log.jpg"
+              src="src/assets/img/log.jpg"
               alt="Card Image"
             />
             <img
               className="login-slide"
-              src="https://i.pinimg.com/564x/14/13/38/1413387c9de2609825b61f0719f024d4.jpg"
+              src="src/assets/img/school boy.jpg"
               alt="Card Image"
             />
             <img
               className="login-slide"
-              src="src\assets\img\log.jpg"
+              src="src/assets/img/boy.jpg"
               alt="Card Image"
             />
           </div>
@@ -91,10 +91,11 @@ const Login = () => {
           </div>
           <button type="submit" className="login-button">Log In</button>
           <hr className="login-divider" />
-          <a className="login-signup-link" href="#signup">Don't have an account? Sign Up</a>
+          <Link to="/signup" className="login-signup-button">Don't have an account? Sign Up</Link> {/* Updated link */}
           <center>
             <p className="login-creator">Made with <span>❤</span> by Shri</p>
-            <button type="button" className="login-signup-link" onClick={handleAdminLoginClick}>
+            <br></br>
+            <button type="button" className="login-admin-button" onClick={handleAdminLoginClick}>
               Admin Login
             </button>
           </center>
