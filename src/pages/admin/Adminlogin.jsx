@@ -55,7 +55,7 @@ const Adminlogin = () => {
           </div>
         </div>
         <form className="unique-login-form" action="#" autoComplete="off" onSubmit={handleSubmit}>
-          <h2 className="unique-login-heading">Log In</h2>
+          <h2 className="unique-login-heading">Admin Log-In</h2>
           <div className="unique-login-input-group">
             <i className="far fa-user fa-lg unique-login-icon"></i>
             {/* <input

@@ -225,19 +225,23 @@ label {
 }
 
 /* Custom Toastify styles */
+/* Customize the success toast */
 .toast-custom {
-  background-color: black;
-  color: rgb(0, 0, 0);
-  /* border: 1px solid red; */
+  background-color: #4caf50; /* Change background color */
+  color: #fff; /* Change text color */
+  border-radius: 8px; /* Optional: Change border radius */
 }
 
+/* Customize the toast body */
 .toast-custom-body {
-  color: rgb(1, 0, 0);
+  color: #fff; /* Change text color */
 }
 
+/* Customize the toast progress bar */
 .toast-custom-progress {
-  background-color: red;
+  background-color: #388e3c; /* Change progress bar color */
 }
+
 
 
 .login-signup-button,

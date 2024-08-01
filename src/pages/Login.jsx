@@ -19,9 +19,9 @@ const Login = () => {
       progressClassName: 'toast-custom-progress',
     });
 
-    // Navigate to Admindash.jsx
+    // Navigate to Userdash.jsx
     setTimeout(() => {
-      navigate('/admindash'); // Update with your actual route
+      navigate('/userdash'); // Update with your actual route
     }, 2000); // Delay to match toast duration
   };
 
@@ -59,7 +59,7 @@ const Login = () => {
           </div>
         </div>
         <form className="login-form" action="#" autoComplete="off" onSubmit={handleSubmit}>
-          <h2 className="login-heading">Log In</h2>
+          <h2 className="login-heading">User-Log In</h2>
           <div className="login-input-group">
             <i className="far fa-user fa-lg login-icon"></i>
           </div>
