@@ -1,8 +1,8 @@
 import React from 'react';
 import { Crown } from 'lucide-react';
-import '../pages/css/Premium.css';
+import '../pages/css/Read.css';
 
-const Premium = () => {
+const Read = () => {
   return (
     <>
       {/* Original Section */}
@@ -175,43 +175,45 @@ Math concepts were inspired by state standards to make sure your child is prepar
 
           <div className="premium-content">
             <img
-              src="https://shop.merriam-webster.com/cdn/shop/products/Britannica-Baby-Encyclopedia-cover.jpg?v=1667239352"
+              src="https://c4.wallpaperflare.com/wallpaper/64/145/218/jungle-book-2016-movies-wallpaper-preview.jpg"
               className="premium-profession-image"
               alt="Profession"
             />
             <img
-              src="https://upload.wikimedia.org/wikipedia/en/b/be/Childrensdigest-1950-10.png"
+              src="https://p4.wallpaperbetter.com/wallpaper/675/801/188/mowgli-jungle-book-bagheera-wallpaper-preview.jpg"
               className="premium-profile-image"
               alt="Profile"
             />
             <div className="premium-profile-detail">
-              <span>Prince Akashi</span>
-              <p>Photographer + Model</p>
+              <span>The Jungle Book</span>
+              <span>Rudyard Kipling</span>
+              {/* <p>Photographer + Model</p> */}
             </div>
             <div className="premium-wrapper">
               <div className="premium-profile-quote">
                 <p>
-                  "If you see something that moves you, and then snap it, you keep a moment."
+                  "The Jungle Book is an 1894 collection of stories by the English author Rudyard Kipling. Most of the characters are animals such as Shere Khan the tiger and Baloo the bear, though a principal character is the boy or "man-cub" Mowgli, who is raised in the jungle by wolves."
                 </p>
               </div>
-              <button className="premium-buy-now-btn">Buy Now</button>
+              <button className="premium-buy-now-btn">₹ 500</button>
             </div>
           </div>
 
           <div className="premium-content">
             <img
-              src="https://rawcdn.githack.com/MuhammadHasann/component-frontend/7e3a0bced6f1b050e8d0b621f2a3a6e7b1cb06d3/section/category%20card-2/assets/Fashion%20Designer.jpg"
+              src="https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781804172247/shakespeare-sonnets-poems-9781804172247_hr.jpg"
               className="premium-profession-image"
               alt="Profession"
             />
             <img
-              src="https://rawcdn.githack.com/MuhammadHasann/component-frontend/7e3a0bced6f1b050e8d0b621f2a3a6e7b1cb06d3/section/category%20card-2/assets/Rafaella%20Mendes.jpg"
+              src="https://m.media-amazon.com/images/I/715c-SwwJuL._AC_UF1000,1000_QL80_.jpg"
               className="premium-profile-image"
               alt="Profile"
             />
             <div className="premium-profile-detail">
-              <span>Rafaella Mendes</span>
-              <p>Fashion Designer + Model</p>
+              <span>English Poems</span>
+              <span>William Shakespeare</span>
+              {/* <p>Fashion Designer + Model</p> */}
             </div>
             <div className="premium-wrapper">
               <div className="premium-profile-quote">
@@ -219,7 +221,7 @@ Math concepts were inspired by state standards to make sure your child is prepar
                   "My mission in life is not merely to survive, but to thrive and to do so with some passion, some compassion, some humor, and some style."
                 </p>
               </div>
-              <button className="premium-buy-now-btn">Buy Now</button>
+              <button className="premium-buy-now-btn">₹ 300</button>
             </div>
           </div>
         </div>
@@ -228,4 +230,4 @@ Math concepts were inspired by state standards to make sure your child is prepar
   );
 };
 
-export default Premium;
+export default Read;

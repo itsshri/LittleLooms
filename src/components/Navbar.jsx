@@ -29,8 +29,9 @@ const Navbar = ({ onMenuClick, theme, toggleTheme }) => {
         <a href="/home" onClick={(e) => handleNavigation(e, '/home')}><House /></a>
         <a href="/podcast" onClick={(e) => handleNavigation(e, '/podcast')}><Podcast /></a>
         <a href="/premium" onClick={(e) => handleNavigation(e, '/premium')}><BookOpen /></a>
-        <a href="/login" onClick={(e) => handleNavigation(e, '/login')}><ScanFace /></a>
+        <a href="/userdash" onClick={(e) => handleNavigation(e, '/userdash')}><BadgePercent /></a>
         <a href="/signup" onClick={(e) => handleNavigation(e, '/signup')}><NotebookText /></a>
+        <a href="/login" onClick={(e) => handleNavigation(e, '/login')}><ScanFace /></a>
         <a href="/userdash" onClick={(e) => handleNavigation(e, '/userdash')}><LibraryBig /></a>
       </nav>
       <button className="navbar-theme-toggle-button" onClick={toggleTheme}>

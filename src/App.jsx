@@ -8,7 +8,7 @@ import Admindash from '../src/pages/admin/Admindash';
 import Bubble from '../src/components/Bubble';
 import Signup from './pages/Signup';
 import Adminlogin from './pages/admin/Adminlogin';
-import Premium from './pages/Premium';
+import Premium from './pages/Read';
 import Userdash from './pages/admin/Userdash';
 
 const App = () => {
