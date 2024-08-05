@@ -1,18 +1,8 @@
 import React, { useState } from 'react';
-import { IonIcon } from '@ionic/react';
-import {
-  homeOutline,
-  peopleOutline,
-  chatbubbleOutline,
-  helpOutline,
-  settingsOutline,
-  lockClosedOutline,
-  logOutOutline
-} from 'ionicons/icons';
-import { useNavigate } from 'react-router-dom';
-import '../admin/Userdash.css';
+import { HopOff } from 'lucide-react';
+import '../admin/Admindash.css';
 
-function Userdash() {
+const Userdash = () => {
   const [users, setUsers] = useState([]);
   const [metrics, setMetrics] = useState({
     dailyViews: 0,
@@ -22,18 +12,12 @@ function Userdash() {
   });
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredUsers, setFilteredUsers] = useState([]);
-  const [editMode, setEditMode] = useState(false);
-  const [editedUser, setEditedUser] = useState({
-    name: '',
-    phone: '',
-    email: ''
-  });
-  const navigate = useNavigate();
 
   // Function to handle search input changes
   function handleSearchChange(event) {
     const query = event.target.value;
     setSearchQuery(query);
+    // Filter users based on the search query
     setFilteredUsers(users.filter(user =>
       user.name.toLowerCase().includes(query.toLowerCase())
     ));
@@ -48,12 +32,13 @@ function Userdash() {
       const newUser = { 
         name, 
         email, 
-        price: '$100', 
-        payment: 'Series', 
-        status: 'Added' 
+        price: '$50', // Default price
+        payment: 'Paid', // Default payment status
+        status: 'New' // Default status
       };
       setUsers(prevUsers => {
         const updatedUsers = [...prevUsers, newUser];
+        // Filter the updated list based on the search query
         setFilteredUsers(updatedUsers.filter(user =>
           user.name.toLowerCase().includes(searchQuery.toLowerCase())
         ));
@@ -76,6 +61,7 @@ function Userdash() {
   function handleUserAction(index, action) {
     setUsers(prevUsers => {
       const updatedUsers = prevUsers.filter((_, i) => i !== index);
+      // Filter the updated list based on the search query
       setFilteredUsers(updatedUsers.filter(user =>
         user.name.toLowerCase().includes(searchQuery.toLowerCase())
       ));
@@ -86,263 +72,320 @@ function Userdash() {
       comments: action === 'remove' ? prevMetrics.comments - 1 : prevMetrics.comments
     }));
   }
-
-  // Function to handle edit profile mode
-  function handleEditClick(user) {
-    setEditMode(true);
-    setEditedUser(user);
+  function updateUserList(index, action) {
+    if (action === 'edit') {
+      const newName = prompt("Enter new name:", users[index].name);
+      const newEmail = prompt("Enter new email:", users[index].email);
+  
+      if (newName && newEmail) {
+        const updatedUser = { ...users[index], name: newName, email: newEmail };
+        setUsers(prevUsers => {
+          const updatedUsers = [...prevUsers];
+          updatedUsers[index] = updatedUser;
+          // Filter the updated list based on the search query
+          setFilteredUsers(updatedUsers.filter(user =>
+            user.name.toLowerCase().includes(searchQuery.toLowerCase())
+          ));
+          return updatedUsers;
+        });
+      }
+    } else if (action === 'remove') {
+      setUsers(prevUsers => {
+        const updatedUsers = prevUsers.filter((_, i) => i !== index);
+        // Filter the updated list based on the search query
+        setFilteredUsers(updatedUsers.filter(user =>
+          user.name.toLowerCase().includes(searchQuery.toLowerCase())
+        ));
+        return updatedUsers;
+      });
+      setMetrics(prevMetrics => ({
+        ...prevMetrics,
+        comments: prevMetrics.comments - 1
+      }));
+    }
   }
-
-  // Function to handle input change for edited user
-  function handleEditChange(event) {
-    const { name, value } = event.target;
-    setEditedUser(prevUser => ({ ...prevUser, [name]: value }));
-  }
-
-  // Function to save edited profile
-  function saveEdit() {
-    setUsers(prevUsers => {
-      const updatedUsers = prevUsers.map(user =>
-        user.email === editedUser.email ? editedUser : user
-      );
-      setFilteredUsers(updatedUsers.filter(user =>
-        user.name.toLowerCase().includes(searchQuery.toLowerCase())
-      ));
-      return updatedUsers;
-    });
-    setEditMode(false);
-  }
-
-  function handleSignOut() {
-    navigate('/login');
-  }
+  
 
   return (
-    <div className="container">
-      {/* Navigation */}
-      <div className="navigation">
-        <ul>
-          <li><a href="#"><span className="icon"><IonIcon icon={homeOutline} /></span></a></li>
-          <li><a href="#"><span className="icon"><IonIcon icon={peopleOutline} /></span><span className="title">My Profile</span></a></li>
-          <li><a href="#" onClick={() => setEditMode(true)}><span className="icon"><IonIcon icon={chatbubbleOutline} /></span><span className="title">Edit Profile</span></a></li>
-          {/* <li><a href="#"><span className="icon"><IonIcon icon={helpOutline} /></span><span className="title">Help</span></a></li> */}
-          {/* <li><a href="#"><span className="icon"><IonIcon icon={settingsOutline} /></span><span className="title">Settings</span></a></li> */}
-          <li><a href="#"><span className="icon"><IonIcon icon={lockClosedOutline} /></span><span className="title">Password</span></a></li>
-          <li><a href="#" onClick={handleSignOut}><span className="icon"><IonIcon icon={logOutOutline} /></span><span className="title">Log Out</span></a></li>
-        </ul>
+    <>
+      <input type="checkbox" id="nav-toggle" />
+      <div className="dashboard-sidebar">
+        <div className="sidebar-header">
+          <h1>
+            <span className="fab fa-asymmetrik"></span>
+           LittleLooms<HopOff />
+          </h1>
+        </div>
+
+        <div className="sidebar-navigation">
+          <ul>
+            <li>
+              <a href="#" className="active-link">
+                <span className="fas fa-tachometer-alt"></span>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span className="fas fa-users"></span>
+                <span>Customers</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span className="fas fa-stream"></span>
+                <span>Projects</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span className="fas fa-shopping-cart"></span>
+                <span>Orders</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span className="fas fa-boxes"></span>
+                <span>Inventory</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span className="fas fa-user-circle"></span>
+                <span>Accounts</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span className="fas fa-tasks"></span>
+                <span>Task</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
 
-      {/* Main Content */}
-      <div className="main">
-        {/* Topbar */}
-        <div className="topbar">
-          <div className="toggle">
-            {/* <IonIcon icon={menuOutline} /> */}
-          </div>
-          <div className="search">
-            <label>
-              <input type="text" placeholder="Search here" value={searchQuery} onChange={handleSearchChange} />
+      <div className="content-area">
+        <header>
+          <h2>
+            <label htmlFor="nav-toggle">
+              <span className="fas fa-bars"></span>
             </label>
-          </div>
-          <div className="user">
-            <img src="https://cdn-icons-png.flaticon.com/256/3585/3585442.png" alt="User" />
-          </div>
-        </div>
+            Dashboard
+          </h2>
 
-        {/* Card Box */}
-        <div className="cardBox">
-          {/* Your card components */}
-        </div>
+          <div className="search-container">
+            <span className="fas fa-search"></span>
+            <input type="search" placeholder="Search..." value={searchQuery} onChange={handleSearchChange} />
+          </div>
 
-        {/* Details */}
-        <div className="details">
-          {/* Recent Orders */}
-          <div className="recentOrders">
-            <div className="cardHeader">
-              <h2>My Wishlist</h2>
-              <center>
-                <a href="#" className="btn">View All</a>
-              </center>
+          <div className="user-info">
+            <img src="https://bit.ly/3bvT89p" width="40" height="40" alt="profile-img" />
+            <div>
+              <h4>Shri</h4>
+              <small>Super Admin</small>
             </div>
-            <table>
-              <thead>
-                <tr>
-                  <td>Book Name</td>
-                  <td>Price</td>
-                  <td>Podcast Name</td>
-                  <td>Status</td>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredUsers.length > 0 ? (
-                  filteredUsers.map((user, index) => (
-                    <tr key={index}>
-                      <td>{user.name}</td>
-                      <td>{user.price}</td>
-                      <td>{user.payment}</td>
-                      <td>
-                        <span className={`status ${user.status.toLowerCase().replace(' ', '')}`}>
-                          {user.status}
-                        </span>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="4">No orders available</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
           </div>
+        </header>
 
-          {/* Recent Customers */}
-          <div className="recentCustomers">
-            <div className="cardHeader">
-              <h2>Recent Wishlist</h2>
+        <main>
+          <div className="info-cards">
+            <div className="info-card">
+              <div>
+                <h1>{metrics.dailyViews}</h1>
+                <span>Daily Views</span>
+              </div>
+              <div>
+                <span className="fas fa-eye"></span>
+              </div>
             </div>
-            <table>
-              <tbody>
-                {users.length > 0 ? (
-                  users.slice(0, 2).map((user, index) => (
-                    <tr key={index}>
-                      <td width="60px">
-                        {/* <div className="imgBx"><img src="src/assets/img/1000028198_ac627fcd241cb9174bc94.jpg" alt="Customer" /></div> */}
-                      </td>
-                      <td>
-                        <h4>{user.name} <br /><span>Location</span></h4>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="2">No recent books</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+            <div className="info-card">
+              <div>
+                <h1>{metrics.sales}</h1>
+                <span>Sales</span>
+              </div>
+              <div>
+                <span className="fas fa-dollar-sign"></span>
+              </div>
+            </div>
+            <div className="info-card">
+              <div>
+                <h1>{metrics.comments}</h1>
+                <span>Comments</span>
+              </div>
+              <div>
+                <span className="fas fa-comments"></span>
+              </div>
+            </div>
+            <div className="info-card">
+              <div>
+                <h1>{metrics.earnings}</h1>
+                <span>Earnings</span>
+              </div>
+              <div>
+                <span className="fas fa-wallet"></span>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Edit Profile Section */}
-        {editMode && (
-          <div className="editProfile">
-            <div className="cardHeader">
-              <h2>Edit Profile</h2>
+          <div className="recent-activity">
+            <div className="projects-section">
+              <div className="card-container">
+                <div className="card-header">
+                  <h2>Recent Orders</h2>
+                  <button>
+                    See all <span className="fas fa-arrow-right"></span>
+                  </button>
+                </div>
+                <div className="card-content">
+                  <div className="table-container">
+                    <table width="100%">
+                      <thead>
+                        <tr>
+                          <td>Title</td>
+                          <td>Book Type</td>
+                          <td>Status</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {/* Existing project rows */}
+                        <tr>
+                          <td>Website</td>
+                          <td>Frontend</td>
+                          <td>
+                            <span className="status-indicator purple"></span>
+                            Review
+                          </td>
+                        </tr>
+                        {/* Add more project rows as needed */}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="customers-section">
+              <div className="card-container">
+                <div className="card-header">
+                  <h2>New Customers</h2>
+                  <button>
+                    See all <span className="fas fa-arrow-right"></span>
+                  </button>
+                </div>
+                <div className="card-content">
+                  {[...Array(7)].map((_, i) => (
+                    <div className="customer-item" key={i}>
+                      <div className="customer-details">
+                        <img src="https://bit.ly/3bvT89p" height="40" width="40" alt="customer" />
+                        <div>
+                          {/* <h4>Malik Abushabab</h4> */}
+                          {/* <small>CEO</small> */}
+                        </div>
+                      </div>
+                      <div className="customer-actions">
+                        <span className="fas fa-user-circle"></span>
+                        <span className="fas fa-comment"></span>
+                        <span className="fas fa-phone-alt"></span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* User Management Section */}
+          <div className="userManagement">
+            <div className="card-header">
+              <h2>Manage Users</h2>
             </div>
             <div className="form">
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Name:</td>
-                    <td>
-                      <input
-                        type="text"
-                        name="name"
-                        value={editedUser.name}
-                        onChange={handleEditChange}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Phone Number:</td>
-                    <td>
-                      <input
-                        type="text"
-                        name="phone"
-                        value={editedUser.phone}
-                        onChange={handleEditChange}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Email:</td>
-                    <td>
-                      <input
-                        type="email"
-                        name="email"
-                        value={editedUser.email}
-                        onChange={handleEditChange}
-                      />
-                    </td>
-                  </tr>
-                    <td>Password:</td>
-                    <td>
-                      <input
-                        type="password"
-                        name="email"
-                        value={editedUser.email}
-                        onChange={handleEditChange}
-                      />
-                    </td>
-                </tbody>
-              </table>
-              <button className="saveButton" onClick={saveEdit}>Save</button>
-              <button className="cancelButton" onClick={() => setEditMode(false)}>Cancel</button>
+              <input type="text" id="userName" placeholder="Name" />
+              <input type="email" id="userEmail" placeholder="Email" />
+              <button onClick={addUser}>Add User</button>
             </div>
-          </div>
-        )}
-
-        {/* User Management Section */}
-        <div className="userManagement">
-          <div className="cardHeader">
-            <h2>Manage Books</h2>
-          </div>
-          <div className="form">
-            <input type="text" id="userName" placeholder="Book Name" />
-            <input type="email" id="userEmail" placeholder="Price" />
-            <input type="email" id="userEmail" placeholder="Podcast Name" />
-            <input type="email" id="userEmail" placeholder="Edition" />
-            <button className="addUserButton" onClick={addUser}>Add to Wishlist</button>
-          </div>
-          <div className="userList">
-            {filteredUsers.map((user, index) => (
-              <div key={index} className="userCard">
-                <h4>{user.name}</h4>
-                <p>{user.email}</p>
-                <button onClick={() => handleUserAction(index, 'remove')}>Remove</button>
-              </div>
-            ))}
-          </div>
-
-          {/* Existing Users Section */}
-          <div className="existingUsers">
-            <div className="cardHeader">
-              <h2>Existing Books</h2>
-            </div>
-            <div className="userTable">
-              <table>
+            <div className="table-container">
+              <table width="100%">
                 <thead>
                   <tr>
-                    <th>Book Name</th>
+                    <th>Name</th>
+                    <th>Email</th>
                     <th>Price</th>
+                    <th>Payment</th>
+                    <th>Status</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {users.length > 0 ? (
-                    users.map((user, index) => (
-                      <tr key={index}>
-                        <td>{user.name}</td>
-                        <td>{user.email}</td>
-                        <td>
-                          <button onClick={() => handleUserAction(index, 'remove')}>Remove</button>
-                        </td>
-                      </tr>
-                    ))
-                  ) : (
-                    <tr>
-                      <td colSpan="3">No users available</td>
+                  {filteredUsers.map((user, index) => (
+                    <tr key={index}>
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td>{user.price}</td>
+                      <td>{user.payment}</td>
+                      <td>{user.status}</td>
+                      <td>
+                        <button onClick={() => handleUserAction(index, 'remove')}>Remove</button>
+                        <br></br>
+                        <br></br>
+                        <button onClick={() => updateUserList(index, 'edit')}>Edit</button>
+                      </td>
                     </tr>
-                  )}
+                  ))}
                 </tbody>
               </table>
             </div>
           </div>
-        </div>
+
+          
+          <div className="userManagement">
+            <div className="card-header">
+              <h2>Manage Orders</h2>
+            </div>
+            <div className="form">
+              <input type="text" id="userName" placeholder="Item" />
+              <input type="email" id="userEmail" placeholder="Order no" />
+              <button onClick={addUser}>Add User</button>
+            </div>
+            <div className="table-container">
+              <table width="100%">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Price</th>
+                    <th>Payment</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredUsers.map((user, index) => (
+                    <tr key={index}>
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td>{user.price}</td>
+                      <td>{user.payment}</td>
+                      <td>{user.status}</td>
+                      <td>
+                        <button onClick={() => handleUserAction(index, 'remove')}>Remove</button>
+                        <br></br>
+                        <br></br>
+                        <button onClick={() => updateUserList(index, 'edit')}>Edit</button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
       </div>
-    </div>
+    </>
   );
 }
 
 export default Userdash;
+
+
+
