@@ -4,6 +4,7 @@ import '../components/css/Navbar.css'; // Ensure this path is correct
 import { Menu, LogOut, ScanEye, Bird, LibraryBig, HopOff, Podcast, House, BookOpen, BadgePercent, Sun, MoonStar, Sparkle, ScanFace, NotebookText } from 'lucide-react';
 import Loader from './Loader'; // Import the Loader component
 import { Album } from 'lucide-react';
+import { Gamepad2 } from 'lucide-react';
 
 const Navbar = ({ onMenuClick, theme, toggleTheme }) => {
   const [loading, setLoading] = useState(false);
@@ -27,9 +28,10 @@ const Navbar = ({ onMenuClick, theme, toggleTheme }) => {
       </div>
       <nav className="navbar-navigation">
         <a href="/home" onClick={(e) => handleNavigation(e, '/home')}><House /></a>
+        <a href="/game" onClick={(e) => handleNavigation(e, '/game')}> <Gamepad2 /></a>
         <a href="/podcast" onClick={(e) => handleNavigation(e, '/podcast')}><Podcast /></a>
         <a href="/premium" onClick={(e) => handleNavigation(e, '/premium')}><BookOpen /></a>
-        <a href="/userdash" onClick={(e) => handleNavigation(e, '/userdash')}><BadgePercent /></a>
+        <a href="/payment" onClick={(e) => handleNavigation(e, '/payment')}><BadgePercent /></a>
         <a href="/signup" onClick={(e) => handleNavigation(e, '/signup')}><NotebookText /></a>
         <a href="/login" onClick={(e) => handleNavigation(e, '/login')}><ScanFace /></a>
         <a href="/userdash" onClick={(e) => handleNavigation(e, '/userdash')}><LibraryBig /></a>

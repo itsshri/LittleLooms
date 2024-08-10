@@ -1,28 +1,63 @@
-import React from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Import useNavigate and Link
-import '../pages/css/Signup.css'; 
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
+import '../pages/css/Signup.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('');
+  const [agree, setAgree] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Display the toast notification
-    toast.success('Registered successfully!', {
-      position: "bottom-right",
-      autoClose: 2000,
-      className: 'toast-custom',
-      bodyClassName: 'toast-custom-body',
-      progressClassName: 'toast-custom-progress',
-    });
+    if (!agree) {
+      toast.error('Please agree to the terms and conditions.', {
+        position: "bottom-right",
+        autoClose: 2000,
+        className: 'toast-custom',
+        bodyClassName: 'toast-custom-body',
+        progressClassName: 'toast-custom-progress',
+      });
+      return;
+    }
 
-    // Navigate to Admindash.jsx
-    setTimeout(() => {
-      navigate('/admindash'); // Update with your actual route
-    }, 2000); // Delay to match toast duration
+    try {
+      // Replace this URL with your actual backend URL
+      const response = await axios.post('http://localhost:7777/api/auth/register', {
+        name,
+        email,
+        password,
+        phone
+      });
+
+      toast.success('Registered successfully!', {
+        position: "bottom-right",
+        autoClose: 2000,
+        className: 'toast-custom',
+        bodyClassName: 'toast-custom-body',
+        progressClassName: 'toast-custom-progress',
+      });
+
+      setTimeout(() => {
+        navigate('/admindash');
+      }, 2000);
+
+    } catch (error) {
+      toast.error('Registration failed. Please try again.', {
+        position: "bottom-right",
+        autoClose: 2000,
+        className: 'toast-custom',
+        bodyClassName: 'toast-custom-body',
+        progressClassName: 'toast-custom-progress',
+      });
+    }
   };
 
   return (
@@ -54,7 +89,7 @@ const Signup = () => {
             />
           </div>
         </div>
-        <form className="signup-form" action="#" autoComplete="off" onSubmit={handleSubmit}>
+        <form className="signup-form" onSubmit={handleSubmit} autoComplete="off">
           <h2 className="signup-heading">Register</h2>
           <div className="signup-input-group">
             <i className="far fa-user fa-lg signup-icon"></i>
@@ -63,6 +98,8 @@ const Signup = () => {
               name="name"
               id="signup-name"
               placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
@@ -73,6 +110,8 @@ const Signup = () => {
               name="email"
               id="signup-email"
               placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -83,6 +122,8 @@ const Signup = () => {
               name="password"
               id="signup-password"
               placeholder="Set Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
@@ -93,36 +134,18 @@ const Signup = () => {
               name="phone"
               id="signup-phone"
               placeholder="Phone Number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               required
             />
-          </div>
-          <div className="signup-input-group">
-            <i className="fas fa-globe fa-lg signup-icon"></i>
-            <select
-              name="country"
-              id="signup-country"
-              className="signup-select"
-              required
-            >
-              <option value="" disabled selected>Select Country</option>
-              <option value="usa">United States</option>
-              <option value="canada">Canada</option>
-              <option value="uk">United Kingdom</option>
-              <option value="australia">Australia</option>
-              <option value="germany">Germany</option>
-              <option value="france">France</option>
-              <option value="india">India</option>
-              <option value="china">China</option>
-              <option value="japan">Japan</option>
-              <option value="brazil">Brazil</option>
-              {/* Add more countries as needed */}
-            </select>
           </div>
           <div className="signup-terms">
             <input
               type="checkbox"
               name="agree"
               id="signup-agree"
+              checked={agree}
+              onChange={() => setAgree(!agree)}
               required
             />
             <label htmlFor="signup-agree">

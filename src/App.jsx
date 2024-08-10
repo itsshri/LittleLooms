@@ -10,6 +10,8 @@ import Signup from './pages/Signup';
 import Adminlogin from './pages/admin/Adminlogin';
 import Premium from './pages/Read';
 import Userdash from './pages/admin/Userdash';
+// import Payment from './pages/Payment';
+import Game from './pages/Game';
 
 const App = () => {
   const [theme, setTheme] = useState('light');
@@ -42,6 +44,8 @@ const App = () => {
         <Route path="/adminlogin" element={<Adminlogin/>}/>
         <Route path="/premium" element={<Premium/>}/>
         <Route path="/userdash" element={<Userdash/>}/>
+        {/* <Route path="/payment" element={<Payment/>}/> */}
+        <Route path="/game" element={<Game/>}/>
         
       </Routes>
     </Router>

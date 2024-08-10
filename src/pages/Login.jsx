@@ -1,32 +1,53 @@
-import React from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Import useNavigate and Link
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios'; // Import Axios
 import '../pages/css/Login.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Display the toast notification
-    toast.success('Logged in successfully!', {
-      position: "bottom-right",
-      autoClose: 2000,
-      className: 'toast-custom',
-      bodyClassName: 'toast-custom-body',
-      progressClassName: 'toast-custom-progress',
-    });
+    try {
+      // Send login request to backend
+      const response = await axios.post('http://localhost:7777/api/auth/login', {
+        email,
+        password
+      });
 
-    // Navigate to Userdash.jsx
-    setTimeout(() => {
-      navigate('/userdash'); // Update with your actual route
-    }, 2000); // Delay to match toast duration
+      // Handle successful response
+      toast.success('Logged in successfully!', {
+        position: "bottom-right",
+        autoClose: 2000,
+        className: 'toast-custom',
+        bodyClassName: 'toast-custom-body',
+        progressClassName: 'toast-custom-progress',
+      });
+
+      // Navigate to Userdash.jsx
+      setTimeout(() => {
+        navigate('/userdash');
+      }, 2000); // Delay to match toast duration
+
+    } catch (error) {
+      // Handle error response
+      toast.error('Login failed. Please try again.', {
+        position: "bottom-right",
+        autoClose: 2000,
+        className: 'toast-custom',
+        bodyClassName: 'toast-custom-body',
+        progressClassName: 'toast-custom-progress',
+      });
+    }
   };
 
   const handleAdminLoginClick = () => {
-    navigate('/adminlogin'); // Update with your actual route
+    navigate('/adminlogin'); 
   };
 
   return (
@@ -70,6 +91,8 @@ const Login = () => {
               name="email"
               id="login-email"
               placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} // Update email state
               required
             />
           </div>
@@ -80,6 +103,8 @@ const Login = () => {
               name="password"
               id="login-password"
               placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} // Update password state
               required
             />
           </div>
@@ -91,7 +116,7 @@ const Login = () => {
           </div>
           <button type="submit" className="login-button">Log In</button>
           <hr className="login-divider" />
-          <Link to="/signup" className="login-signup-button">Don't have an account? Sign Up</Link> {/* Updated link */}
+          <Link to="/signup" className="login-signup-button">Don't have an account? Sign Up</Link>
           <center>
             <p className="login-creator">Made with <span>❤</span> by Shri</p>
             <br></br>
