@@ -1,5 +1,6 @@
 import React from 'react';
 import { Crown } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import '../pages/css/Read.css';
 
 const Read = () => {
@@ -22,6 +23,7 @@ const Read = () => {
             <div className="premium-profile-detail">
               <span>ShinChan Crayon Book</span>
               <span>Manga Series</span>
+            <button className="premium-buy-now-btn"><Heart /></button>
               <Crown/>
             </div>
             <div className="premium-wrapper">
@@ -49,6 +51,7 @@ const Read = () => {
             <div className="premium-profile-detail">
               <span>Heidi</span>
               <span>Johanna Spyri</span>
+            <button className="premium-buy-now-btn"><Heart /></button>
               {/* <p>Photographer + Model</p> */}
             </div>
             <div className="premium-wrapper">
@@ -75,6 +78,7 @@ const Read = () => {
             <div className="premium-profile-detail">
               <span>Tenali Raman</span>
               <span>Compilation</span>
+            <button className="premium-buy-now-btn"><Heart /></button>
             </div>
             <div className="premium-wrapper">
               <div className="premium-profile-quote">
@@ -104,6 +108,7 @@ const Read = () => {
             <div className="premium-profile-detail">
               <span>Angry Birds</span>
               <span>Rovio Entertainment</span>
+            <button className="premium-buy-now-btn"><Heart /></button>  
             </div>
             <div className="premium-wrapper">
               <div className="premium-profile-quote">
@@ -112,6 +117,7 @@ const Read = () => {
                 </p>
               </div>
               <button className="premium-buy-now-btn">Buy Now</button>
+            {/* <button className="premium-buy-now-btn"><Heart /></button> */}
             </div>
               <p>*Loom Subscription</p>
           </div>
@@ -145,6 +151,7 @@ Math concepts were inspired by state standards to make sure your child is prepar
                 </p>
               </div>
               <button className="premium-buy-now-btn">₹ 300</button>
+              <button className="premium-buy-now-btn"><Heart /></button>
             </div>
           </div>
 
@@ -170,6 +177,7 @@ Math concepts were inspired by state standards to make sure your child is prepar
                 </p>
               </div>
               <button className="premium-buy-now-btn">₹ 200</button>
+            <button className="premium-buy-now-btn"><Heart /></button>
             </div>
           </div>
 
@@ -196,6 +204,7 @@ Math concepts were inspired by state standards to make sure your child is prepar
                 </p>
               </div>
               <button className="premium-buy-now-btn">₹ 500</button>
+            <button className="premium-buy-now-btn"><Heart /></button>
             </div>
           </div>
 
@@ -222,6 +231,7 @@ Math concepts were inspired by state standards to make sure your child is prepar
                 </p>
               </div>
               <button className="premium-buy-now-btn">₹ 300</button>
+            <button className="premium-buy-now-btn"><Heart /></button>
             </div>
           </div>
         </div>

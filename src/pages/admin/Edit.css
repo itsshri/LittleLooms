@@ -1,0 +1,91 @@
+/* General container styling */
+.container {
+    display: flex;
+    height: 100vh; /* Adjust to ensure full viewport height */
+  }
+  
+  /* Sidebar styling */
+  .sidebar {
+    width: 290px; /* Adjust width as needed */
+    background-color: #f4f4f4;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+  }
+  
+  /* Main content styling */
+  .main-content {
+    margin-left: 290px; /* Match this to the sidebar width */
+    padding: 20px;
+    flex: 1;
+    background: white;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+  
+  /* Center the table inside the main-content */
+  .wishlist-table {
+    width: 100%;
+    max-width: 1000px;
+    height: auto; /* Adjust height as needed */
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* Table and cell styling */
+  .wishlist-table th, .wishlist-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+  }
+  
+  .wishlist-table th {
+    background: linear-gradient(135deg, #4caf50, #81c784);
+    color: white;
+  }
+  
+  .wishlist-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .wishlist-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Button styling */
+  .edit-button, .delete-button, .add-to-cart-button, .discard-button {
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .edit-button {
+    background-color: #ffa500;
+    color: white;
+    margin-right: 5px;
+  }
+  
+  .delete-button {
+    background-color: #ff4d4d;
+    color: white;
+  }
+  
+  .add-to-cart-button {
+    background-color: #4caf50;
+    color: white;
+    margin-right: 5px;
+  }
+  
+  .discard-button {
+    background-color: #999;
+    color: white;
+  }
+  

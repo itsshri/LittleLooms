@@ -30,7 +30,7 @@ const Signup = () => {
 
     try {
       // Replace this URL with your actual backend URL
-      const response = await axios.post('http://localhost:7777/api/auth/register', {
+      const response = await axios.post('http://localhost:8080/api/auth/register', {
         name,
         email,
         password,
@@ -46,7 +46,7 @@ const Signup = () => {
       });
 
       setTimeout(() => {
-        navigate('/admindash');
+        navigate('/login');
       }, 2000);
 
     } catch (error) {

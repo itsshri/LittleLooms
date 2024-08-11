@@ -1,0 +1,58 @@
+/* Basic reset and box sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Sidebar container styling */
+  .sidebar {
+    height: 1700px;
+    width: 345px;
+    background: #03030a; /* Dark background color */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: fixed; /* Fixed position on the left */
+    margin-top: 80px;
+  }
+  
+  /* Header styling */
+  .sidebar-header h1 {
+    font-size: 24px;
+    color: #ecf0f1; /* Light color for header text */
+    margin-bottom: 30px;
+  }
+  
+  /* Sidebar button styling */
+  .sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between buttons */
+  }
+  
+  .sidebar-button {
+    background: #34495e; /* Darker background for buttons */
+    color: #ecf0f1; /* Light color for button text */
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 18px;
+    transition: background 0.3s ease;
+  }
+  
+  .sidebar-button:hover {
+    background: #1abc9c; /* Color change on hover */
+  }
+  
+  .sidebar-button:focus {
+    outline: none; /* Remove outline on focus */
+  }
+  
+  .sidebar-button:active {
+    background: #16a085; /* Slightly darker color on click */
+  }
+  

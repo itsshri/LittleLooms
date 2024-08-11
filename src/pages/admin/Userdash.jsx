@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { HopOff } from 'lucide-react';
 import '../admin/Admindash.css';
-
+import Sidebar from './Sidebar';
 const Userdash = () => {
   const [users, setUsers] = useState([]);
   const [metrics, setMetrics] = useState({
@@ -72,6 +72,7 @@ const Userdash = () => {
       comments: action === 'remove' ? prevMetrics.comments - 1 : prevMetrics.comments
     }));
   }
+
   function updateUserList(index, action) {
     if (action === 'edit') {
       const newName = prompt("Enter new name:", users[index].name);
@@ -104,63 +105,21 @@ const Userdash = () => {
       }));
     }
   }
-  
 
   return (
     <>
       <input type="checkbox" id="nav-toggle" />
       <div className="dashboard-sidebar">
-        <div className="sidebar-header">
+        <div className="">
           <h1>
             <span className="fab fa-asymmetrik"></span>
-           LittleLooms<HopOff />
+           {/* LittleLooms<HopOff /> */}
           </h1>
         </div>
 
-        <div className="sidebar-navigation">
+        <div className="">
           <ul>
-            <li>
-              <a href="#" className="active-link">
-                <span className="fas fa-tachometer-alt"></span>
-                <span>Dashboard</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span className="fas fa-users"></span>
-                <span>Customers</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span className="fas fa-stream"></span>
-                <span>Projects</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span className="fas fa-shopping-cart"></span>
-                <span>Orders</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span className="fas fa-boxes"></span>
-                <span>Inventory</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span className="fas fa-user-circle"></span>
-                <span>Accounts</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span className="fas fa-tasks"></span>
-                <span>Task</span>
-              </a>
-            </li>
+            <Sidebar/>
           </ul>
         </div>
       </div>
@@ -171,7 +130,7 @@ const Userdash = () => {
             <label htmlFor="nav-toggle">
               <span className="fas fa-bars"></span>
             </label>
-            Dashboard
+            My Profile
           </h2>
 
           <div className="search-container">
@@ -242,22 +201,22 @@ const Userdash = () => {
                     <table width="100%">
                       <thead>
                         <tr>
-                          <td>Title</td>
+                          <td>Name</td>
                           <td>Book Type</td>
                           <td>Status</td>
                         </tr>
                       </thead>
                       <tbody>
-                        {/* Existing project rows */}
-                        <tr>
-                          <td>Website</td>
-                          <td>Frontend</td>
-                          <td>
-                            <span className="status-indicator purple"></span>
-                            Review
-                          </td>
-                        </tr>
-                        {/* Add more project rows as needed */}
+                        {users.map((user, index) => (
+                          <tr key={index}>
+                            <td>{user.name}</td>
+                            <td>Book</td> {/* Example placeholder */}
+                            <td>
+                              <span className="status-indicator purple"></span>
+                              {user.status}
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </div>
@@ -273,119 +232,48 @@ const Userdash = () => {
                   </button>
                 </div>
                 <div className="card-content">
-                  {[...Array(7)].map((_, i) => (
-                    <div className="customer-item" key={i}>
-                      <div className="customer-details">
-                        <img src="https://bit.ly/3bvT89p" height="40" width="40" alt="customer" />
-                        <div>
-                          {/* <h4>Malik Abushabab</h4> */}
-                          {/* <small>CEO</small> */}
-                        </div>
-                      </div>
-                      <div className="customer-actions">
-                        <span className="fas fa-user-circle"></span>
-                        <span className="fas fa-comment"></span>
-                        <span className="fas fa-phone-alt"></span>
-                      </div>
-                    </div>
-                  ))}
+                  <div className="form">
+                    <input type="text" id="userName" placeholder="Name" />
+                    <input type="email" id="userEmail" placeholder="Email" />
+                    <button onClick={addUser}>Add User</button>
+                  </div>
+                  <div className="table-container">
+                    <table width="100%">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Price</th>
+                          <th>Payment</th>
+                          <th>Status</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {users.map((user, index) => (
+                          <tr key={index}>
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                            <td>{user.price}</td>
+                            <td>{user.payment}</td>
+                            <td>{user.status}</td>
+                            <td>
+                              <button onClick={() => handleUserAction(index, 'remove')}>Remove</button>
+                              <button onClick={() => updateUserList(index, 'edit')}>Edit</button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* User Management Section */}
-          <div className="userManagement">
-            <div className="card-header">
-              <h2>Manage Users</h2>
-            </div>
-            <div className="form">
-              <input type="text" id="userName" placeholder="Name" />
-              <input type="email" id="userEmail" placeholder="Email" />
-              <button onClick={addUser}>Add User</button>
-            </div>
-            <div className="table-container">
-              <table width="100%">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Price</th>
-                    <th>Payment</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredUsers.map((user, index) => (
-                    <tr key={index}>
-                      <td>{user.name}</td>
-                      <td>{user.email}</td>
-                      <td>{user.price}</td>
-                      <td>{user.payment}</td>
-                      <td>{user.status}</td>
-                      <td>
-                        <button onClick={() => handleUserAction(index, 'remove')}>Remove</button>
-                        <br></br>
-                        <br></br>
-                        <button onClick={() => updateUserList(index, 'edit')}>Edit</button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          
-          <div className="userManagement">
-            <div className="card-header">
-              <h2>Manage Orders</h2>
-            </div>
-            <div className="form">
-              <input type="text" id="userName" placeholder="Item" />
-              <input type="email" id="userEmail" placeholder="Order no" />
-              <button onClick={addUser}>Add User</button>
-            </div>
-            <div className="table-container">
-              <table width="100%">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Price</th>
-                    <th>Payment</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredUsers.map((user, index) => (
-                    <tr key={index}>
-                      <td>{user.name}</td>
-                      <td>{user.email}</td>
-                      <td>{user.price}</td>
-                      <td>{user.payment}</td>
-                      <td>{user.status}</td>
-                      <td>
-                        <button onClick={() => handleUserAction(index, 'remove')}>Remove</button>
-                        <br></br>
-                        <br></br>
-                        <button onClick={() => updateUserList(index, 'edit')}>Edit</button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
             </div>
           </div>
         </main>
       </div>
     </>
   );
-}
+};
 
 export default Userdash;
-
-
-

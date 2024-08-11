@@ -99,17 +99,19 @@
 
 /* Content Area */
 .content-area {
-  margin-left: 345px;
+  margin-left: 395px;
   margin-top: 90px;
   min-height: 100vh;
   background: #fffefe;
   transition: margin-left 300ms;
   padding: 2rem;
+  padding-right: 200px;
+  
 }
 
 /* Header */
 header {
-  height: 80px;
+  height: 100px;
   background: #fff;
   padding: 0 3rem;
   display: flex;
@@ -196,11 +198,13 @@ header h2 {
 /* Projects Section */
 .projects-section,
 .customers-section {
+  height: 100%;
   width: 50%;
   background: #f9f9f9;
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
 }
 
 .projects-section .card-header,

@@ -10,8 +10,10 @@ import Signup from './pages/Signup';
 import Adminlogin from './pages/admin/Adminlogin';
 import Premium from './pages/Read';
 import Userdash from './pages/admin/Userdash';
-// import Payment from './pages/Payment';
+import Payment from './pages/Payment';
 import Game from './pages/Game';
+import Edit from './pages/admin/Edit';
+import Sidebar from './pages/admin/Sidebar';
 
 const App = () => {
   const [theme, setTheme] = useState('light');
@@ -44,8 +46,10 @@ const App = () => {
         <Route path="/adminlogin" element={<Adminlogin/>}/>
         <Route path="/premium" element={<Premium/>}/>
         <Route path="/userdash" element={<Userdash/>}/>
-        {/* <Route path="/payment" element={<Payment/>}/> */}
+        <Route path="/payment" element={<Payment/>}/>
         <Route path="/game" element={<Game/>}/>
+        <Route path="/edit" element={<Edit/>}/>
+        <Route path="/sidebar" element={<Sidebar/>}/>
         
       </Routes>
     </Router>
