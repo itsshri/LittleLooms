@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { HopOff } from 'lucide-react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for Toastify
 import '../admin/Admindash.css';
 import Sidebar from './Sidebar';
+
+
+
 const Userdash = () => {
   const [users, setUsers] = useState([]);
   const [metrics, setMetrics] = useState({
@@ -12,6 +17,10 @@ const Userdash = () => {
   });
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredUsers, setFilteredUsers] = useState([]);
+  const [profile, setProfile] = useState({
+    name: 'Shri',
+    email: 'shri@example.com'
+  });
 
   // Function to handle search input changes
   function handleSearchChange(event) {
@@ -106,8 +115,25 @@ const Userdash = () => {
     }
   }
 
+  // Function to handle profile update
+  function handleProfileUpdate() {
+    const name = document.getElementById('profileName').value;
+    const email = document.getElementById('profileEmail').value;
+
+    if (name && email) {
+      setProfile({ name, email });
+      toast.success('Profile Updated');
+    } else {
+      alert('Please fill in all fields.');
+    }
+  }
+
   return (
     <>
+      <ToastContainer
+        position="bottom-right"
+        className="custom-toastify-container"
+      />
       <input type="checkbox" id="nav-toggle" />
       <div className="dashboard-sidebar">
         <div className="">
@@ -119,7 +145,7 @@ const Userdash = () => {
 
         <div className="">
           <ul>
-            <Sidebar/>
+            <Sidebar />
           </ul>
         </div>
       </div>
@@ -139,10 +165,10 @@ const Userdash = () => {
           </div>
 
           <div className="user-info">
-            <img src="https://bit.ly/3bvT89p" width="40" height="40" alt="profile-img" />
+            <img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f60a.svg" width="40" height="40" alt="profile-img" />
             <div>
-              <h4>Shri</h4>
-              <small>Super Admin</small>
+              <h4>{profile.name}</h4> {/* Update profile name here */}
+              <small>User</small>
             </div>
           </div>
         </header>
@@ -203,20 +229,52 @@ const Userdash = () => {
                         <tr>
                           <td>Name</td>
                           <td>Book Type</td>
-                          <td>Status</td>
+                          <td>Payment Status</td>
                         </tr>
                       </thead>
                       <tbody>
-                        {users.map((user, index) => (
-                          <tr key={index}>
-                            <td>{user.name}</td>
-                            <td>Book</td> {/* Example placeholder */}
-                            <td>
-                              <span className="status-indicator purple"></span>
-                              {user.status}
-                            </td>
-                          </tr>
-                        ))}
+                        {/* Existing project rows */}
+                        <tr>
+                          <td>Heidi</td>
+                          <td>$100</td>
+                          <td>
+                            <span className="status-indicator purple"></span>
+                            Added in cart
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Tom and Jerry</td>
+                          <td>$280</td>
+                          <td>
+                            <span className="status-indicator purple"></span>
+                            Done
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Moral Science</td>
+                          <td>$80</td>
+                          <td>
+                            <span className="status-indicator purple"></span>
+                            Done
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Akbar & Birbal</td>
+                          <td>$0</td>
+                          <td>
+                            <span className="status-indicator purple"></span>
+                            Done
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Angry Birds</td>
+                          <td>$150</td>
+                          <td>
+                            <span className="status-indicator purple"></span>
+                            In Review
+                          </td>
+                        </tr>
+                        {/* Add more project rows as needed */}
                       </tbody>
                     </table>
                   </div>
@@ -226,45 +284,20 @@ const Userdash = () => {
             <div className="customers-section">
               <div className="card-container">
                 <div className="card-header">
-                  <h2>New Customers</h2>
+                  <h2>Edit Profile</h2>
                   <button>
                     See all <span className="fas fa-arrow-right"></span>
                   </button>
                 </div>
                 <div className="card-content">
                   <div className="form">
-                    <input type="text" id="userName" placeholder="Name" />
-                    <input type="email" id="userEmail" placeholder="Email" />
-                    <button onClick={addUser}>Add User</button>
-                  </div>
-                  <div className="table-container">
-                    <table width="100%">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Email</th>
-                          <th>Price</th>
-                          <th>Payment</th>
-                          <th>Status</th>
-                          <th>Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {users.map((user, index) => (
-                          <tr key={index}>
-                            <td>{user.name}</td>
-                            <td>{user.email}</td>
-                            <td>{user.price}</td>
-                            <td>{user.payment}</td>
-                            <td>{user.status}</td>
-                            <td>
-                              <button onClick={() => handleUserAction(index, 'remove')}>Remove</button>
-                              <button onClick={() => updateUserList(index, 'edit')}>Edit</button>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                    <input type="email" id="profileName" placeholder="Name" />
+                    <input type="email" id="profileEmail" placeholder="Email" />
+                    <input type="password" id="profilePassword" placeholder="Password" />
+                    <input type="email" id="profileAddress" placeholder="Address" />
+                    <input type="number" id="profileAddress" placeholder="Phone" />
+                    <br></br>
+                    <button onClick={handleProfileUpdate}>Save</button>
                   </div>
                 </div>
               </div>

@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
 
-:root {
-  --main-color: #11101d;
-  --color-dark: #1D2231;
-  --text-grey: #8390A2;
+/* Add this to your CSS file */
+.status-indicator.green {
+  background-color: green; /* Set the color to green */
 }
+
 
 * {
   padding: 0;
@@ -23,7 +23,6 @@
   top: 0;
   height: 100%;
   z-index: 100;
-  background: var(--main-color);
   transition: width 300ms;
   margin-top: 80px;
 }
@@ -394,4 +393,36 @@ header h2 {
   .dashboard-sidebar {
     width: 70px;
   }
+}
+
+
+/* toastify */
+
+
+/* Custom Toastify styles */
+
+
+.custom-toastify-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  z-index: 9999;
+  color: #111;
+}
+
+.Toastify__toast--success {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+}
+
+.Toastify__toast--error {
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+}
+
+.Toastify__toast-body {
+  font-size: 14px;
 }

@@ -9,7 +9,7 @@
   .sidebar {
     height: 1700px;
     width: 345px;
-    background: #03030a; /* Dark background color */
+ 
     color: white;
     display: flex;
     flex-direction: column;
