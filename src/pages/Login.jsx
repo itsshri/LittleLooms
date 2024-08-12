@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios'; // Import Axios
+import axios from 'axios';
 import '../pages/css/Login.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -35,8 +35,13 @@ const Login = () => {
       }, 2000); // Delay to match toast duration
 
     } catch (error) {
-      // Handle error response
-      toast.error('Login failed. Please try again.', {
+      // Log the error for debugging
+      console.error('Login error:', error);
+
+      // Show detailed error message if available
+      const errorMessage = error.response?.data?.message || 'Login failed. Please try again.';
+      
+      toast.error(errorMessage, {
         position: "bottom-right",
         autoClose: 2000,
         className: 'toast-custom',
@@ -92,7 +97,7 @@ const Login = () => {
               id="login-email"
               placeholder="Email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)} // Update email state
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -104,7 +109,7 @@ const Login = () => {
               id="login-password"
               placeholder="Password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)} // Update password state
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>

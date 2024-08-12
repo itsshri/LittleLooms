@@ -6,7 +6,7 @@ import Loader from './Loader'; // Import the Loader component
 import { Album } from 'lucide-react';
 import { Gamepad2 } from 'lucide-react';
 
-import { Heart } from 'lucide-react';
+
 
 const Navbar = ({ onMenuClick, theme, toggleTheme }) => {
   const [loading, setLoading] = useState(false);
@@ -37,7 +37,6 @@ const Navbar = ({ onMenuClick, theme, toggleTheme }) => {
         <a href="/signup" onClick={(e) => handleNavigation(e, '/signup')}><NotebookText /></a>
         <a href="/login" onClick={(e) => handleNavigation(e, '/login')}><ScanFace /></a>
         <a href="/userdash" onClick={(e) => handleNavigation(e, '/userdash')}><LibraryBig /></a>
-        <a href="/wishlist" onClick={(e) => handleNavigation(e, '/wishlist')}><Heart /></a>
       </nav>
       <button className="navbar-theme-toggle-button" onClick={toggleTheme}>
         {theme === 'light' ? <MoonStar /> : <Sun />}

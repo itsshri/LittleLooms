@@ -1,9 +1,6 @@
 import React from 'react';
 import '../pages/css/Book.css';
 
-
-
-
 const Book = () => {
  return (
     

@@ -5,8 +5,6 @@ import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for Toastify
 import '../admin/Admindash.css';
 import Sidebar from './Sidebar';
 
-
-
 const Userdash = () => {
   const [users, setUsers] = useState([]);
   const [metrics, setMetrics] = useState({

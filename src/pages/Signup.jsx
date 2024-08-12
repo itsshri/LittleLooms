@@ -29,7 +29,6 @@ const Signup = () => {
     }
 
     try {
-      // Replace this URL with your actual backend URL
       const response = await axios.post('http://localhost:7777/api/auth/register', {
         name,
         email,
@@ -46,17 +45,11 @@ const Signup = () => {
       });
 
       setTimeout(() => {
-        navigate('/login'); // Change to the correct path for Login.jsx if needed
+        navigate('/admindash');
       }, 2000);
 
     } catch (error) {
-      // Log the error to inspect it
-      console.error('Registration error:', error);
-
-      // Show detailed error message if available
-      const errorMessage = error.response?.data?.message || 'Registration failed. Please try again.';
-      
-      toast.error(errorMessage, {
+      toast.error('Registration failed. Please try again.', {
         position: "bottom-right",
         autoClose: 2000,
         className: 'toast-custom',

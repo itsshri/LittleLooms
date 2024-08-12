@@ -1,15 +1,4 @@
-body {
-    /* background: #eee; */
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    font-family: 'Arial', Helvetica, sans-serif;
-    min-height: 90vh;
-    flex-direction: column;
-    flex-direction: column; /* Ensure that the flex container behaves as a column to center content vertically */
-    margin: 0; /* Remove default margin */
-    overflow-x: hidden; /* Hide horizontal overflow to keep the layout clean */
-}
+
 
 .card-container {
     display: flex;
